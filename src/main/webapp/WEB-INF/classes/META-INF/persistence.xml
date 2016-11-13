@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+version="2.1">
+<persistence-unit name="miUP">
+<provider>org.hibernate.ejb.HibernatePersistence</provider>
+<class>clases.Admin</class>
+<class>clases.Administrative</class>
+<class>clases.Board</class>
+<class>clases.Comment</class>
+<class>clases.Config</class>
+<class>clases.MailNotifier</class>
+<class>clases.Note</class>
+<class>clases.Professor</class>
+<class>clases.Publisher</class>
+<class>clases.Student</class>
+<class>clases.SuscriptionManager</class>
+<class>clases.User</class>
+<properties>
+<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
+<property name="hibernate.connection.password" value="rama"/>
+<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/carteleravirtual"/>
+<property name="hibernate.connection.username" value="root" />
+<!-- <property name="hibernate.default_schema" value="stock" />  -->
+<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect"/>
+<property name="hibernate.hbm2ddl.auto" value="update"/>
+
+  <!-- Pool properties -->
+    <property name="minPoolSize" value="5" />
+    <property name="maxPoolSize" value="20" />
+    <property name="acquireIncrement" value="1" />
+    <property name="maxStatements" value="50" />
+    <property name="idleConnectionTestPeriod" value="3000" />
+    <property name="loginTimeout" value="300" />
+
+</properties>
+</persistence-unit>
+</persistence>
