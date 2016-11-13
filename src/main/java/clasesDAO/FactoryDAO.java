@@ -45,6 +45,8 @@ public class FactoryDAO {
 		SuscriptionManager manager=SuscriptionManager.getInstance();
 		FactoryDAO.getSuscriptionManager().persist(manager);
 		
+		
+		
 		Admin admin = new Admin("admin", "admin", conf, "admin@mail.com");
 	    FactoryDAO.getUsers().persist(admin);
 	    FactoryDAO.getUsers().persist(new Student("alu", "alu", conf, "alumno@mail.com"));
@@ -69,6 +71,10 @@ public class FactoryDAO {
 	    FactoryDAO.getBoards().persist(board);
 	    
 	    
+	    //para ver si crea mailNotifier
+	    manager.addMailNotifier("mailUno@mail.com", boardNoticias);
+	    manager.addMailNotifier("mailDos@mail.com", boardNoticias);
+		FactoryDAO.getSuscriptionManager().update(manager);  //si usas persist explota, disatouched el mailNotif :p
 	    
 		System.out.println("inicialice todo!, ponele...");
 	}

@@ -42,6 +42,7 @@ public class Note {
 	@JoinColumn(name = "authorId")
 	private User author;
 	
+	protected Boolean down;
 	
 	public Note(){
 		format= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // yyyy/MM/dd
@@ -56,6 +57,7 @@ public class Note {
 		comments=new ArrayList<Comment>();
 		publish=publishParam;
 		format= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // yyyy/MM/dd
+		down=false;
 	}
 
 

@@ -1,10 +1,10 @@
 package clases;
 
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Hashtable;
+
 import java.util.Map;
+
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -12,6 +12,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 public class SuscriptionManager {
 	
@@ -19,7 +23,7 @@ public class SuscriptionManager {
 	private Long id;
 	
 	@OneToMany
-	@Column(nullable=false)
+	@Cascade({CascadeType.PERSIST,CascadeType.SAVE_UPDATE, CascadeType.MERGE})
 	 private  Map<Board,MailNotifier> mailNotifiers;
     //private  Map<MailNotifier> mailNotifiers;
 	

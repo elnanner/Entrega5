@@ -1,6 +1,11 @@
 package clasesDAO.JPAHibernate;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
 import clases.SuscriptionManager;
 
 
@@ -10,5 +15,8 @@ import clases.SuscriptionManager;
 			super(SuscriptionManager.class);
 		}
 
+		
+		
+	
 
 }

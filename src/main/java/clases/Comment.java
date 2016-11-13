@@ -27,6 +27,8 @@ public class Comment {
 	@JoinColumn(name = "authorId")
 	private User author;
 	
+	protected Boolean down;
+	
 	public Comment(){
 		format= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // yyyy/MM/dd
 	}
@@ -44,6 +46,7 @@ public class Comment {
 		author=authorParam;
 		commentDate= new Date();
 		format= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+		down=false;
 	}
 
 	public String getCommentDate() {

@@ -31,13 +31,14 @@ public class User {
 	@ManyToOne
 	@JoinColumn(name = "configId")
 	protected Config configuration;
-	protected Integer state; //0 es activo, 1 baja, el resto veremos
+	protected Integer state; //0 es activo, 1 baja, el resto veremos   
 	
 	@ManyToOne
 	@JoinColumn(name = "suscriptionManagerId")
 	protected SuscriptionManager suscriptionManager;
 	protected String mail;
 	
+	protected Boolean down;
 	
 	public User(){
 		
@@ -67,6 +68,7 @@ public class User {
 		state=0;  
 		suscriptionManager=SuscriptionManager.getInstance();
 		mail=mailParam;
+		down=false;
 	}
 	
 	public void addBoardInterest(Board board){

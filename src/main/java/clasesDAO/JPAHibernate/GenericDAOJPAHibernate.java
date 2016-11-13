@@ -8,9 +8,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-
+import javax.persistence.Query;
 
 import clasesDAO.GenericDAO;
+
 
 
 public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
@@ -69,6 +70,8 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 		try {
 			etx = em.getTransaction();
 			etx.begin();
+		
+		
 			em.persist(entity);
 			etx.commit();
 		} catch (RuntimeException e) {
@@ -106,6 +109,34 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 			
 		return result;
 	}
+	
+	//lo bajaria a los que tienen baja logica (user, board, comment y note)
+	public ArrayList<T> getAllWithoutOrderAndNotLogicDelete(){
+		ArrayList<T> result = new ArrayList<T>();
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction etx = em.getTransaction();
+		etx.begin();
+	    result=(ArrayList<T>)(em.createQuery("SELECT table FROM "+this.getPersistentClass().getSimpleName()  +" table where delete=0")).getResultList();
+		etx.commit();
+		em.close(); 
+		return result;
+	}
+	
+	//lo bajaria a los que tienen baja logica (user, board, comment y note)
+	public void logicDelete(Long id){
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		EntityManager em = emf.createEntityManager();
+		EntityTransaction etx = em.getTransaction();
+		etx.begin();
+		Query q=em.createQuery("update "+this.getPersistentClass().getSimpleName()+" set delete = 1 where id = ? ");
+		q.setParameter(1,id);
+		q.getResultList();
+		etx.commit();
+		em.close();
+	}
+	
+	
 	
 	@Override
 	public Integer getCount() {

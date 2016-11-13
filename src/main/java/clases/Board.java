@@ -36,6 +36,16 @@ public class Board extends Observable{
 	//@JoinColumn(name="idBoard", referencedColumnName="id"),inverseJoinColumns=@JoinColumn(name="idNote", referencedColumnName="id"))
 	private Collection<Note> noteList;
 	
+	protected Boolean down;
+	
+	public Boolean getDown() {
+		return down;
+	}
+
+	public void setDown(Boolean delete) {
+		this.down = delete;
+	}
+
 	public Board(){
 		
 	}
@@ -45,6 +55,7 @@ public class Board extends Observable{
 		description = descriptionParam;
 		boardList = new ArrayList<Board>();
 		noteList = new ArrayList<Note>();
+		down=false;
 	}
 
 
