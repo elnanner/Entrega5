@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,7 +17,7 @@ public class Administrative extends User {
 
 	
 	@OneToMany
-	@Column(nullable=false)
+	@ElementCollection
 	private Collection<Board> permissionsList;
 	
 	public Administrative(String nameParam, String passParam,Config config,String mailParam) {

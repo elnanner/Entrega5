@@ -8,8 +8,6 @@ import javax.persistence.Id;
 @Entity
 public class Admin extends User {
 	
-
-	
 	//admin no tiene las pizarras sobre los que tiene permisos
     //porque tiene permiso sobre todas, por los que nos parecia innecesario que 
 	//tenga todas las pizarras. Por ese mismo motivo el canPublish() siempre devuelve true

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Publisher extends User {
 
 
 	@OneToMany
-	@Column(nullable=false)
+	@ElementCollection
 	private Collection<Board> permissionsList;
 	
 	public Publisher(){
