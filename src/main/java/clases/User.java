@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,20 +26,22 @@ public class User {
 	
 	protected String name;
 	protected String password;
-	@OneToMany
+	@OneToMany(fetch = FetchType.EAGER)
 	@Column(nullable=false)
 	protected Collection<Board> favouritesBoards;
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "configId")
 	protected Config configuration;
 	protected Integer state; //0 es activo, 1 baja, el resto veremos   
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "suscriptionManagerId")
 	protected SuscriptionManager suscriptionManager;
 	protected String mail;
 	
 	protected Boolean down;
+	
+	protected String type; //parche rapidin para poder probar con lo viejo (las sub clases lo setean bien)
 	
 	public User(){
 		
@@ -104,5 +107,14 @@ public class User {
 	public void setMail(String mail) {
 		this.mail = mail;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 	
 }

@@ -23,10 +23,11 @@ public class Administrative extends User {
 	public Administrative(String nameParam, String passParam,Config config,String mailParam) {
 		super(nameParam, passParam,config,mailParam);
 		permissionsList=new ArrayList<Board>();
+		type="administrative";
 	}
 	
 	public Administrative(){
-		
+		type="administrative";
 	}
 	
 	public Collection<Board> getPermissionsList() {

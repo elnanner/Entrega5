@@ -9,6 +9,7 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -22,35 +23,37 @@ import javax.persistence.Transient;
 public class Note {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	private Boolean canComment;
+
 	private Date publishDate;
 	
 	@Transient
 	private DateFormat format;
 	
 
-	@ElementCollection
+	@ElementCollection(fetch = FetchType.EAGER)
 	private Collection<String> resources;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@ElementCollection
 	private Collection<Comment> comments;
 	private String publish;
 	
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "authorId")
 	private User author;
 	
 	protected Boolean down;
+	
+	private Boolean canComment;
 	
 	public Note(){
 		format= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // yyyy/MM/dd
 	}
 	
 	//elegir si dejar en el cnstructor el date o no (lo mismo para comment)
-	public Note(Boolean canCommentParam, Date publishDateParam, User authorParam, String publishParam){
-		canComment=canCommentParam;
+	public Note(Boolean canCommentParam,Date publishDateParam, User authorParam, String publishParam){
+	
 		author=authorParam;
 		publishDate=publishDateParam;
 		resources=new ArrayList<String>();
@@ -58,6 +61,7 @@ public class Note {
 		publish=publishParam;
 		format= new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); // yyyy/MM/dd
 		down=false;
+		canComment=canCommentParam;
 	}
 
 
@@ -69,7 +73,14 @@ public class Note {
 	public void setPublish(String publishParam) {
 		publish = publishParam;
 	}
+	public Boolean getCanComment() {
+		return canComment;
+	}
 
+
+	public void setCanComment(Boolean canComment) {
+		this.canComment = canComment;
+	}
 
 	public User getAuthor() {
 		return author;
@@ -85,6 +96,14 @@ public class Note {
 		return comments;
 	}
 
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 
 	public void addComment(Comment commentParam) {
 		comments.add(commentParam);
@@ -106,14 +125,7 @@ public class Note {
 	}
 
 
-	public Boolean getCanComment() {
-		return canComment;
-	}
-
-
-	public void setCanComment(Boolean canComment) {
-		this.canComment = canComment;
-	}
+	
 
 
 	public String getPublishDate() {

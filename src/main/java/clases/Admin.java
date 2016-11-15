@@ -14,10 +14,12 @@ public class Admin extends User {
 	
 	public Admin() {
 		super();
+		type="adm";
 	}
 	
 	public Admin(String nameParam, String passParam,Config config,String mailParam) {
 		super(nameParam, passParam,config,mailParam);
+		type="adm";
 	}
    
 	public Boolean canPublish(){

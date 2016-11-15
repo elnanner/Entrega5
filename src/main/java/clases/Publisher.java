@@ -20,12 +20,13 @@ public class Publisher extends User {
 	private Collection<Board> permissionsList;
 	
 	public Publisher(){
-		
+		type="pub";
 	}
 	
 	public Publisher(String nameParam, String passParam,Config config,String mailParam) {
 		super(nameParam, passParam,config,mailParam);
 		permissionsList=new ArrayList<Board>();
+		type="pub";
 	}
 	
 	public Collection<Board> getPermissionsList() {

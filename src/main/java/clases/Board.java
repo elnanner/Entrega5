@@ -7,6 +7,7 @@ import java.util.Observable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,12 +26,22 @@ public class Board extends Observable{
 	private String name;
 	private String description;
 	
-	@ManyToMany
+
+	
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@ManyToMany(fetch = FetchType.EAGER)
 	@ElementCollection
 	//@JoinTable(name="board_board",joinColumns=
 	//@JoinColumn(name="idBoardFather", referencedColumnName="id"),inverseJoinColumns=@JoinColumn(name="idBoardChild", referencedColumnName="id"))
 	private Collection<Board> boardList;
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@ElementCollection
 	//@JoinTable(name="board_note",joinColumns=
 	//@JoinColumn(name="idBoard", referencedColumnName="id"),inverseJoinColumns=@JoinColumn(name="idNote", referencedColumnName="id"))
@@ -56,8 +67,10 @@ public class Board extends Observable{
 		boardList = new ArrayList<Board>();
 		noteList = new ArrayList<Note>();
 		down=false;
+		
 	}
 
+	
 
 	public String getName() {
 		return name;
@@ -88,6 +101,7 @@ public class Board extends Observable{
 	}
 	
 	public Collection<Board> getBoardList() {
+	//public ArrayList<Board> getBoardList() {
 		return boardList;
 	}
 
@@ -96,9 +110,10 @@ public class Board extends Observable{
 		this.boardList = boardList;
 	}
 
-
-	public Collection<Note> getNoteList() {
-		return noteList;
+	//public ArrayList<Note> getNoteList() {
+  	public Collection<Note> getNoteList() {
+  		return  noteList;
+		//return (ArrayList<Note>) noteList;
 	}
 
 

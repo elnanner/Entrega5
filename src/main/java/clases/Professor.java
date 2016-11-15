@@ -26,7 +26,7 @@ public class Professor extends User {
 	}
 
 	public Professor(){
-		
+		type="doc";
 	}
 	
 	public void addPermission(Board permissionParam) {
@@ -36,6 +36,7 @@ public class Professor extends User {
 	public Professor(String nameParam, String passParam,Config config,String mailParam) {
 		super(nameParam, passParam,config,mailParam);
 		permissionsList=new ArrayList<Board>();
+		type="doc";
 	}
 
 }
