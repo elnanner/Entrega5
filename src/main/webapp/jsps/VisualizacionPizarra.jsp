@@ -7,12 +7,12 @@
 <%Board cartelera= (Board)session.getAttribute("elementoActual"); %>    
 
 
-<a href=<%=cartelera.getName()%>> 
+<a href=<%="ver/"+cartelera.getUrl()%>> 
 	<img class="img-responsive" src=<%="./images/cartelera.jpg" %> width="700" height="400\" alt="">
 	<%-- <img class="img-responsive" src=<%=cartelera.getPathImage() %> width="700" height="400\" alt="">--%>
 </a>   
 <h3>
-	<a href=<%=cartelera.getName()%>> <%=cartelera.getName()%></a> 
+	<a href=<%="ver/"+cartelera.getUrl()%>> <%=cartelera.getName()%></a> 
 	
 </h3>
 <p><%=cartelera.getDescription() %></p>    

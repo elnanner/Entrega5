@@ -62,34 +62,34 @@ public class FactoryDAO {
 	    FactoryDAO.getNotes().persist(note);
 	    
 	    
-	    Board boardNoticias=new Board("Institucional", "Pizarra de las noticias institucionales de la facultad");
+	    Board boardNoticias=new Board("Institucional", "Pizarra de las noticias institucionales de la facultad","institucional");
 	    FactoryDAO.getBoards().persist(boardNoticias);
 	    
-	    Board boardSubjectsFirstYear=new Board("Materias primer año", "Pizarra sobre  las noticias de las materias de primer año");
+	    Board boardSubjectsFirstYear=new Board("Materias primer año", "Pizarra sobre  las noticias de las materias de primer año","primero");
 	    FactoryDAO.getBoards().persist(boardSubjectsFirstYear);
 	    
-	    Board boardSubjectsSecondYear=new Board("Materias segundo año", "Pizarra sobre  las noticias de las materias de segundo año");
+	    Board boardSubjectsSecondYear=new Board("Materias segundo año", "Pizarra sobre  las noticias de las materias de segundo año","segundo");
 	    FactoryDAO.getBoards().persist(boardSubjectsSecondYear);
 	    
-	    Board boardSubjectsThirdYear=new Board("Materias tercer año", "Pizarra sobre  las noticias de las materias de tercer año");
+	    Board boardSubjectsThirdYear=new Board("Materias tercer año", "Pizarra sobre  las noticias de las materias de tercer año","tercero");
 	    FactoryDAO.getBoards().persist(boardSubjectsThirdYear);
 	    
-	    Board boardSubjectsFourthYear=new Board("Materias cuarto año", "Pizarra sobre  las noticias de las materias de cuarto año");
+	    Board boardSubjectsFourthYear=new Board("Materias cuarto año", "Pizarra sobre  las noticias de las materias de cuarto año","cuarto");
 	    FactoryDAO.getBoards().persist(boardSubjectsFourthYear);
 	    
-	    Board boardSubjectsFifthYear=new Board("Materias quinto año", "Pizarra sobre  las noticias de las materias de quinto año");
+	    Board boardSubjectsFifthYear=new Board("Materias quinto año", "Pizarra sobre  las noticias de las materias de quinto año","quinto");
 	    FactoryDAO.getBoards().persist(boardSubjectsFifthYear);
 	    
-	    Board boardLaboral=new Board("Pizarra con información laboral", "Ofertas de trabajo para los alumnos");
+	    Board boardLaboral=new Board("Pizarra con información laboral", "Ofertas de trabajo para los alumnos","ofertas");
 	    FactoryDAO.getBoards().persist(boardLaboral);
 	    
-	    Board boardEvents=new Board("Pizarra de eventos", "Pizarra sobre  las noticias de eventos que se den en la facultad o relacionados");
+	    Board boardEvents=new Board("Pizarra de eventos", "Pizarra sobre  las noticias de eventos que se den en la facultad o relacionados","eventos");
 	    FactoryDAO.getBoards().persist(boardEvents);
 	    
-	    Board boardLostProperty=new Board("Objetos perdidos", "Pizarra con los objetos perdidos");
+	    Board boardLostProperty=new Board("Objetos perdidos", "Pizarra con los objetos perdidos","perdidos");
 	    FactoryDAO.getBoards().persist(boardLostProperty);
 	    
-	    Board board=new Board("Home", "pizarra home");
+	    Board board=new Board("Home", "pizarra home","home");
 	    board.addNote(note);
 	    board.addBoard(boardNoticias);
 	    board.addBoard(boardSubjectsFirstYear);

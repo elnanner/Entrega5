@@ -48,6 +48,8 @@ public class Board extends Observable{
 	private Collection<Note> noteList;
 	
 	protected Boolean down;
+	protected String url;
+
 	
 	public Boolean getDown() {
 		return down;
@@ -61,16 +63,27 @@ public class Board extends Observable{
 		
 	}
 	
-	public Board(String nameParam, String descriptionParam) {
+	public Board(String nameParam, String descriptionParam,String urlParam) {
 		name = nameParam;
 		description = descriptionParam;
 		boardList = new ArrayList<Board>();
 		noteList = new ArrayList<Note>();
 		down=false;
+		url=urlParam;
 		
 	}
 
 	
+
+	
+
+	public String getUrl() {
+		return url;
+	}
+
+	public void setUrl(String url) {
+		this.url = url;
+	}
 
 	public String getName() {
 		return name;

@@ -6,13 +6,13 @@
 <%@ page import="org.hibernate.collection.internal.PersistentBag"%>
 
 <!--  new --> <%@ page import="clases.Note"%>   
-    <%System.out.println("pizarras CONTENIDOOO "); %>
+   
 <% Board pizarra=(Board)session.getAttribute("pizarra"); %>
-<%System.out.println("post board!"); %>
+
 <% PersistentBag notas=(PersistentBag)pizarra.getNoteList();%>
-<%System.out.println("medio arrays!"); %>
+
 <% PersistentBag pizarras=(PersistentBag)pizarra.getBoardList();%> <!--  LOS GETS ME DABAN COLLECTION OJO... -->
-<%System.out.println("pizarras "+pizarras); %>
+
 <!-- LO DEJO EN TRUE PERO ES UN TEMA DE LA NOTA, NO DE LA PIZARRA COMO DECIA ENUNCIADO --> <%session.setAttribute("permiteComentar",true);%><%--<%session.setAttribute("permiteComentar",pizarra.); --%>
 <div class="row">
 <!--  -->
