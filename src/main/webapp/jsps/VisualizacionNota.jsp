@@ -28,7 +28,7 @@
 		<%-- ><img class="img-responsive" src=<%=nota.getPathImage()%> width="700" height="400" alt="" title="<%=nota.getTexto() %>">--%>
 	</a>   
 	<h4>
-		<input type="button" class="btn-link" data-toggle="modal" data-target="<%= "#"+nota.getId() %>" value="Oferta de la empresa: <%= nota.getAuthor()%>" > 
+		<input type="button" class="btn-link" data-toggle="modal" data-target="<%= "#"+nota.getId() %>" value="Oferta de la empresa: <%= nota.getAuthor().getName()%>" > 
 	</h4>
 	<p><%= nota.getPublish()%></p>
     
@@ -40,7 +40,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><%= nota.getAuthor() %></h4>
+        <h4 class="modal-title" id="myModalLabel"><%= nota.getAuthor().getName() %></h4>
       </div>
       <div class="modal-body">
         <%= "Fecha: " +nota.getPublishDate()%>
@@ -64,7 +64,7 @@
        		                           <li> 
        		                       		
        		                       		  <div class="timeline-panel">
-       		                       			<%= (((Comment)comments.get(indice)).getAuthor())+" dijo:"+(((Comment)comments.get(indice)).getText()) %>
+       		                       			<%= (((Comment)comments.get(indice)).getAuthor().getName())+" dijo:"+(((Comment)comments.get(indice)).getText()) %>
        		                       			   </div>
        		                       			</li>
        		                          
