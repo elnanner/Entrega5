@@ -41,7 +41,8 @@ public class AltaUsuario extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("AltaUsuario.jsp");
 	}
 
 	
@@ -57,11 +58,11 @@ public class AltaUsuario extends HttpServlet {
 		String password2=request.getParameter("password2");
 		String email=request.getParameter("email");
 		String tipoUser=request.getParameter("tipoUsuario");
-		if(!password.equals(password2)){
-			//rebotamos, claves distintas
-			sesion.setAttribute("mensajeError","Las claves no son iguales"/*board.getName()*/ );
-			//response.sendRedirect("./AltaUsuario.jsp");
-		}
+//		if(!password.equals(password2)){
+//			//rebotamos, claves distintas
+//			sesion.setAttribute("mensajeError","Las claves no son iguales"/*board.getName()*/ );
+//			//response.sendRedirect("./AltaUsuario.jsp");
+//		}
 		//se validan los datos recibidos en el request
 		ArrayList<String> resultValidator=Validator.validarUsuario(userName, password, email);
 		if(resultValidator.get(0).equals("false")){
@@ -69,16 +70,23 @@ public class AltaUsuario extends HttpServlet {
 			//response.sendRedirect("./AltaUsuario.jsp");
 		}
 		sesion.setAttribute("mensajeError",resultValidator.get(1)/*board.getName()*/ );
+		if(!password.equals(password2)){
+			//rebotamos, claves distintas
+			resultValidator.set(0, "false");
+			sesion.setAttribute("mensajeError","Las claves no son iguales"/*board.getName()*/ );
+			//response.sendRedirect("./AltaUsuario.jsp");
+		}
 		
 		//se valida que se haya ingresado eltipo de usuario
 		if(tipoUser.trim().equals("") || tipoUser ==null){
 			sesion.setAttribute("mensajeError",resultValidator.get(1)+"-Se debe elegir algun tipo de usuario." );
 		}
 		
-		if(resultValidator.get(0).equals("true") && (tipoUser!=null) && (password.equals(password2)) ){
+		if(resultValidator.get(0).equals("true") && (tipoUser!=null)){
 		
 		SuscriptionManager.getInstance().setInstance(FactoryDAO.getSuscriptionManager().getManager());
-		System.out.println("manager id "+SuscriptionManager.getInstance().getId());
+		//System.out.println("manager id "+SuscriptionManager.getInstance().getId());
+		System.out.println("Usuario ingresado correctamente fiera!");
         switch (tipoUser) {
             case "adm":
             	    
@@ -89,22 +97,22 @@ public class AltaUsuario extends HttpServlet {
             case "alu":  
         		 //FactoryDAO.getUsers().persist(new Student(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
         		 sesion.setAttribute("mensajeError","" );
-     			 response.sendRedirect("./AltaUsuario.jsp");
+     			// response.sendRedirect("./AltaUsuario.jsp");
                  break;
             case "pro":  
         		//FactoryDAO.getUsers().persist(new Professor(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
         		 sesion.setAttribute("mensajeError","" );
-     			 response.sendRedirect("./AltaUsuario.jsp");
+     			// response.sendRedirect("./AltaUsuario.jsp");
                  break;
             case "pub":  
         		 //FactoryDAO.getUsers().persist(new Publisher(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
         		 sesion.setAttribute("mensajeError","" );
-     			 response.sendRedirect("./AltaUsuario.jsp");
+     			// response.sendRedirect("./AltaUsuario.jsp");
                  break;
           
             default:
             	// sesion.setAttribute("mensajeError","Tipo de usuario inexistente" );
-     			 response.sendRedirect("./AltaUsuario.jsp");
+     			// response.sendRedirect("./AltaUsuario.jsp");
                  break;
         }
 		}else{
