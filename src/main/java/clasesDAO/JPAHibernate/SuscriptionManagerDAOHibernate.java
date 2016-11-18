@@ -9,9 +9,10 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
 import clases.SuscriptionManager;
+import clasesDAO.SuscriptionManagerDAO;
 
 
-	public class SuscriptionManagerDAOHibernate  extends GenericDAOJPAHibernate<SuscriptionManager>{
+	public class SuscriptionManagerDAOHibernate  extends GenericDAOJPAHibernate<SuscriptionManager> implements SuscriptionManagerDAO{
 
 		public SuscriptionManagerDAOHibernate(){
 			super(SuscriptionManager.class);

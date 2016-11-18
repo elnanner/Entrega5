@@ -9,8 +9,9 @@ import javax.persistence.Persistence;
 import javax.persistence.Query;
 
 import clases.Board;
+import clasesDAO.BoardDAO;
 
-public class BoardDAOHibernate extends GenericDAOJPAHibernate<Board>{
+public class BoardDAOHibernate extends GenericDAOJPAHibernate<Board> implements BoardDAO{
 	
 	public BoardDAOHibernate(){
 		super(Board.class);
