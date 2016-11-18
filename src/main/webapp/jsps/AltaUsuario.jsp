@@ -21,24 +21,37 @@
 
 <body>
 
+
 <%@ include file="Header.jsp" %>
 <h1 style="text-align:center"> Alta Usuario</h1>
 
+<% String mensajeError=(String)session.getAttribute("mensajeError"); %>
+<% if(mensajeError!=null && mensajeError.equals("") ){ %>
+         alta exitosa
+<%}else{ %>
+        <%if (mensajeError!=null){ %>
+       		<%= "errores : "+mensajeError %>
+       	<%} %>
+<% } %>
+
 <div class="container">
-	<form action="#" method="post">
+	<form action="AltaUsuario" method="post">
 		<div class="form-group">	
 			<label for="tipoUsuario">Tipo de Usuario: </label>
-			<select>
+			<select name="tipoUsuario">
 			<option selected value="">Elegir tipo</option>
 			  <option value="adm" id="adm" >Administrador</option>
 			  <option value="pub" id="pub" >Publicador</option>
+			   <option value="alu" id="alu" >Alumno</option>
+			    <option value="pro" id="pro" >Profesor</option>
+			     <!--   <option value="sec" id="sec" >Secretario</option>-->
 			</select>
 			 
 		</div>	
-		<div class="form-group">
+		<!--  <div class="form-group">
 			<label for="name">Nombre Completo (Usuario o Empresa):</label>
 			<input class="form-control" placeholder="Ingrese Nombre" type="text" id="name" name="name" required>
-		</div>
+		</div>-->
 		<div class="form-group">	
 			<label for="descrip">Nombre de Usuario:</label>
 			<input type="text"  class="form-control" id="usuario" placeholder="Nombre de usuario"  name="usuario" required>
@@ -54,6 +67,11 @@
 			<input type="password"  class="form-control" id="password2" placeholder="Aqu&iacute su Contrase&ntildea"  name="password2" required>
 			 
 		</div>	
+		
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input class="form-control" placeholder="Ingrese mail" type="email" id="email" name="email" required>
+		</div>
 	
 	<button type="submit" class="btn btn-success">Registrar Usuario</button>
 	</form>

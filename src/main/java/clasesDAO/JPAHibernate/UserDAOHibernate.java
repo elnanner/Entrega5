@@ -31,6 +31,7 @@ public class UserDAOHibernate  extends GenericDAOJPAHibernate<User>{
         return result;
 	}
 	
+
 	
 	public User login(String userName,String pass){
 		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");

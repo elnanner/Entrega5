@@ -20,8 +20,22 @@ import org.hibernate.annotations.CascadeType;
 public class SuscriptionManager {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
-	private Long id;
+	private  Long id;
 	
+	
+
+	public static void setInstance(SuscriptionManager instance) {
+		SuscriptionManager.instance = instance;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
 	@OneToMany
 	@Cascade({CascadeType.PERSIST,CascadeType.SAVE_UPDATE, CascadeType.MERGE})
 	 private  Map<Board,MailNotifier> mailNotifiers;

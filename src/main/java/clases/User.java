@@ -17,6 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
 public class User {
@@ -73,6 +76,8 @@ public class User {
 		mail=mailParam;
 		down=false;
 	}
+	
+
 	
 	public void addBoardInterest(Board board){
 		suscriptionManager.addMailNotifier(mail, board);
