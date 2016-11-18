@@ -17,14 +17,18 @@ import clasesDAO.GenericDAO;
 public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 
 	protected Class<T> persistentClass;
+	protected  static EntityManagerFactory emf=null;
 	
 	public GenericDAOJPAHibernate(Class clase) {
 		persistentClass = clase;
+		if(emf==null){
+		  emf = Persistence.createEntityManagerFactory("miUP");
+		}
     }
 	
 	@Override
 	public T update(T entity) {//este update notas y pizarras lo van a pisar...
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = em.getTransaction();
 		etx.begin();
@@ -36,7 +40,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 
 	@Override
 	public void delete(T entity) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = null;
 		try {
@@ -64,7 +68,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 
 	@Override
 	public T persist(T entity) {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = null;
 		try {
@@ -85,7 +89,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 	@Override
 	public T get(Long id) {
 		T result = null;
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = em.getTransaction();
 		etx.begin();
@@ -99,7 +103,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 
 	public ArrayList<T> getAllWithoutOrder(){
 		ArrayList<T> result = new ArrayList<T>();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = em.getTransaction();
 		etx.begin();
@@ -113,7 +117,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 	//lo bajaria a los que tienen baja logica (user, board, comment y note)
 	public ArrayList<T> getAllWithoutOrderAndNotLogicDelete(){
 		ArrayList<T> result = new ArrayList<T>();
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+	//	EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = em.getTransaction();
 		etx.begin();
@@ -125,7 +129,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 	
 	//lo bajaria a los que tienen baja logica (user, board, comment y note)
 	public void logicDelete(Long id){
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = em.getTransaction();
 		etx.begin();
@@ -140,7 +144,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 	
 	@Override
 	public Integer getCount() {
-		EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
 		EntityManager em = emf.createEntityManager();
 		EntityTransaction etx = em.getTransaction();
 		etx.begin();

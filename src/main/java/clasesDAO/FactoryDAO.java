@@ -80,22 +80,22 @@ public class FactoryDAO {
 	    Board boardNoticias=new Board("Institucional", "Pizarra de las noticias institucionales de la facultad","institucional");
 	    FactoryDAO.getBoards().persist(boardNoticias);
 	    
-	    Board boardSubjectsFirstYear=new Board("Materias primer año", "Pizarra sobre  las noticias de las materias de primer año","primero");
+	    Board boardSubjectsFirstYear=new Board("Materias primer aï¿½o", "Pizarra sobre  las noticias de las materias de primer aï¿½o","primero");
 	    FactoryDAO.getBoards().persist(boardSubjectsFirstYear);
 	    
-	    Board boardSubjectsSecondYear=new Board("Materias segundo año", "Pizarra sobre  las noticias de las materias de segundo año","segundo");
+	    Board boardSubjectsSecondYear=new Board("Materias segundo aï¿½o", "Pizarra sobre  las noticias de las materias de segundo aï¿½o","segundo");
 	    FactoryDAO.getBoards().persist(boardSubjectsSecondYear);
 	    
-	    Board boardSubjectsThirdYear=new Board("Materias tercer año", "Pizarra sobre  las noticias de las materias de tercer año","tercero");
+	    Board boardSubjectsThirdYear=new Board("Materias tercer aï¿½o", "Pizarra sobre  las noticias de las materias de tercer aï¿½o","tercero");
 	    FactoryDAO.getBoards().persist(boardSubjectsThirdYear);
 	    
-	    Board boardSubjectsFourthYear=new Board("Materias cuarto año", "Pizarra sobre  las noticias de las materias de cuarto año","cuarto");
+	    Board boardSubjectsFourthYear=new Board("Materias cuarto aï¿½o", "Pizarra sobre  las noticias de las materias de cuarto aï¿½o","cuarto");
 	    FactoryDAO.getBoards().persist(boardSubjectsFourthYear);
 	    
-	    Board boardSubjectsFifthYear=new Board("Materias quinto año", "Pizarra sobre  las noticias de las materias de quinto año","quinto");
+	    Board boardSubjectsFifthYear=new Board("Materias quinto aï¿½o", "Pizarra sobre  las noticias de las materias de quinto aï¿½o","quinto");
 	    FactoryDAO.getBoards().persist(boardSubjectsFifthYear);
 	    
-	    Board boardLaboral=new Board("Pizarra con información laboral", "Ofertas de trabajo para los alumnos","ofertas");
+	    Board boardLaboral=new Board("Pizarra con informaciï¿½n laboral", "Ofertas de trabajo para los alumnos","ofertas");
 	    FactoryDAO.getBoards().persist(boardLaboral);
 	    
 	    Board boardEvents=new Board("Pizarra de eventos", "Pizarra sobre  las noticias de eventos que se den en la facultad o relacionados","eventos");
@@ -196,22 +196,22 @@ public class FactoryDAO {
 	    Board boardNoticias=new Board("Institucional", "Pizarra de las noticias institucionales de la facultad","institucional");
 	    FactoryDAO.getBoards().persist(boardNoticias);
 	    
-	    Board boardSubjectsFirstYear=new Board("Materias primer año", "Pizarra sobre  las noticias de las materias de primer año","primero");
+	    Board boardSubjectsFirstYear=new Board("Materias primer aï¿½o", "Pizarra sobre  las noticias de las materias de primer aï¿½o","primero");
 	    FactoryDAO.getBoards().persist(boardSubjectsFirstYear);
 	    
-	    Board boardSubjectsSecondYear=new Board("Materias segundo año", "Pizarra sobre  las noticias de las materias de segundo año","segundo");
+	    Board boardSubjectsSecondYear=new Board("Materias segundo aï¿½o", "Pizarra sobre  las noticias de las materias de segundo aï¿½o","segundo");
 	    FactoryDAO.getBoards().persist(boardSubjectsSecondYear);
 	    
-	    Board boardSubjectsThirdYear=new Board("Materias tercer año", "Pizarra sobre  las noticias de las materias de tercer año","tercero");
+	    Board boardSubjectsThirdYear=new Board("Materias tercer aï¿½o", "Pizarra sobre  las noticias de las materias de tercer aï¿½o","tercero");
 	    FactoryDAO.getBoards().persist(boardSubjectsThirdYear);
 	    
-	    Board boardSubjectsFourthYear=new Board("Materias cuarto año", "Pizarra sobre  las noticias de las materias de cuarto año","cuarto");
+	    Board boardSubjectsFourthYear=new Board("Materias cuarto aï¿½o", "Pizarra sobre  las noticias de las materias de cuarto aï¿½o","cuarto");
 	    FactoryDAO.getBoards().persist(boardSubjectsFourthYear);
 	    
-	    Board boardSubjectsFifthYear=new Board("Materias quinto año", "Pizarra sobre  las noticias de las materias de quinto año","quinto");
+	    Board boardSubjectsFifthYear=new Board("Materias quinto aï¿½o", "Pizarra sobre  las noticias de las materias de quinto aï¿½o","quinto");
 	    FactoryDAO.getBoards().persist(boardSubjectsFifthYear);
 	    
-	    Board boardLaboral=new Board("Pizarra con información laboral", "Ofertas de trabajo para los alumnos","ofertas");
+	    Board boardLaboral=new Board("Pizarra con informaciï¿½n laboral", "Ofertas de trabajo para los alumnos","ofertas");
 	    FactoryDAO.getBoards().persist(boardLaboral);
 	    
 	    Board boardEvents=new Board("Pizarra de eventos", "Pizarra sobre  las noticias de eventos que se den en la facultad o relacionados","eventos");
@@ -304,7 +304,7 @@ public class FactoryDAO {
 			System.out.println("*****************************INICIANDO TEST DE MODIFICACION Y BAJA******************");
 	        Board boardPrimeroTest=FactoryDAO.getBoards().get(13L);
 	        
-	        System.out.println(" agregando a pizarra de primer año, pizarra adp, con una nota y comentario cantidad boards es: "+boardPrimeroTest.getBoardList().size());
+	        System.out.println(" agregando a pizarra de primer aï¿½o, pizarra adp, con una nota y comentario cantidad boards es: "+boardPrimeroTest.getBoardList().size());
 	         
 	        Board boardADP=new Board("Pizarra de ADP", "Pizarra sobre  las noticias de la materia adp","adp");
 	        
@@ -328,7 +328,26 @@ public class FactoryDAO {
 		    Board boardPrimeroTestLevantada=FactoryDAO.getBoards().get(13L);	        
 	        System.out.println(" comentario cantidad boards tras updatear es: "+boardPrimeroTestLevantada.getBoardList().size());
 		    
-		    
+	        System.out.println("update texto comentario");
+	        commentADP.setText("updated");
+	        FactoryDAO.getComments().update(commentADP);
+	        Comment commentADPUpdated =FactoryDAO.getComments().get(23L);
+	        if(commentADPUpdated.getText().equals("updated")){
+	        	 System.out.println("exito al updatear comentario ");
+	        }else{
+	        	 System.out.println("errror al updatear comentario");
+	        }
+	        
+	        
+		    System.out.println("vamos a dar de baja lÃ³gica la pizarra nueva, pero antes queremos imprimir el valor de la baja");
+	        System.out.println(" baja de la pizarra adp antes del borrado logico (actualiacion) es: "+boardADP.getDown());
+	        
+	        boardADP.setDown(true);
+	        FactoryDAO.getBoards().update(boardADP);
+	        Board boardADPActualizada=FactoryDAO.getBoards().get(25L);
+	        System.out.println(" baja de la pizarra adp antes del borrado logico (actualiacion) es: "+boardADPActualizada.getDown());
+	        
+	        
 	}
 	
 	
