@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -75,27 +76,26 @@ public class AltaUsuario extends HttpServlet {
 	            	    
 	            		 FactoryDAO.getUsers().persist(new Admin(userName, password,  FactoryDAO.getConfig().getAllWithoutOrder().get(0), email));
 	            		 sesion.setAttribute("mensajeError","" );
-	         			 response.sendRedirect("./jsps/AltaUsuario.jsp");
 	                     break;
 	            case "alu":  
 	            		FactoryDAO.getUsers().persist(new Student(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
 	            		 sesion.setAttribute("mensajeError","" );
-	         			 response.sendRedirect("./AltaUsuario.jsp");
+	         			 //response.sendRedirect("./AltaUsuario.jsp");
 	                     break;
 	            case "pro":  
             		FactoryDAO.getUsers().persist(new Professor(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
             		 sesion.setAttribute("mensajeError","" );
-         			 response.sendRedirect("./AltaUsuario.jsp");
+         			 //response.sendRedirect("./AltaUsuario.jsp");
                      break;
 	            case "pub":  
             		FactoryDAO.getUsers().persist(new Publisher(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
             		 sesion.setAttribute("mensajeError","" );
-         			 response.sendRedirect("./AltaUsuario.jsp");
+         			// response.sendRedirect("./AltaUsuario.jsp");
                      break;
 	          
 	            default:
 	            	 sesion.setAttribute("mensajeError","Tipo de usuario inexistente" );
-         			 response.sendRedirect("./AltaUsuario.jsp");
+         			// response.sendRedirect("./AltaUsuario.jsp");
 	                 break;
 	        }
 		

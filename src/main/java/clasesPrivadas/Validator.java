@@ -16,18 +16,18 @@ public class Validator {
 		result.add(1,"");
 		if(!userName.isEmpty()){
 			result.set(0, "false");
-			result.set(1, result.get(1)+" el nombre de usuario no puede ser vacio.");
+			result.set(1, result.get(1)+"El nombre de usuario no puede ser vacio.");
 			
 			//verificar contra bd por ej
 		}
 		if(!password.isEmpty()){
 			result.set(0, "false");
-			result.set(1, result.get(1)+" el password no puede ser vacio.");
+			result.set(1, result.get(1)+"-El password no puede ser vacio.");
 		}
 		
 		if(!email.isEmpty()){
 			result.set(0, "false");
-			result.set(1, result.get(1)+" el mail no puede ser vacio.");
+			result.set(1, result.get(1)+"-El mail no puede ser vacio.");
 		}else{
 			//tipo mail
 			 // Compiles the given regular expression into a pattern.
@@ -38,7 +38,7 @@ public class Validator {
 	        Matcher matcher = pattern.matcher(email);
 	       if(!matcher.matches()){
 	    	   result.set(0, "false");
-				result.set(1, result.get(1)+" el mail no cumple el formato"); //anotar formato
+				result.set(1, result.get(1)+"-El mail no cumple el formato"); //anotar formato
 	       }
 		}
 		

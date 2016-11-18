@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="org.apache.jasper.tagplugins.jstl.core.ForEach"%>
 <html lang="es">
 <head>
 		  <!-- Bootstrap Core CSS -->
@@ -25,12 +28,16 @@
 <%@ include file="Header.jsp" %>
 <h1 style="text-align:center"> Alta Usuario</h1>
 
-<% String mensajeError=(String)session.getAttribute("mensajeError"); %>
+<% String mensajeError=(String)session.getAttribute("mensajeError"); 
+%>
 <% if(mensajeError!=null && mensajeError.equals("") ){ %>
-         alta exitosa
+         <div class ='alert alert-success'><p style='text-align:center'>Se ha Ingresado Correctamente al Usuario</p></div>
 <%}else{ %>
         <%if (mensajeError!=null){ %>
-       		<%= "errores : "+mensajeError %>
+       		<div class ='alert alert-danger'><p style='text-align:center'>
+       		<%for (String valor: mensajeError.split("-")) {%>
+                <%=valor%>
+           <% }%></p></div>  
        	<%} %>
 <% } %>
 
@@ -54,23 +61,23 @@
 		</div>-->
 		<div class="form-group">	
 			<label for="descrip">Nombre de Usuario:</label>
-			<input type="text"  class="form-control" id="usuario" placeholder="Nombre de usuario"  name="usuario" required>
+			<input type="text"  class="form-control" id="usuario" placeholder="Nombre de usuario"  name="usuario" >
 			 
 		</div>	
 		<div class="form-group">	
 			<label for="descrip">Contrase&ntilde;a:</label>
-			<input type="password"  class="form-control" id="password1" placeholder="Aqu&iacute su Contrase&ntildea"  name="password1" required>
+			<input type="password"  class="form-control" id="password1" placeholder="Aqu&iacute su Contrase&ntildea"  name="password1" >
 			 
 		</div>	
 		<div class="form-group">	
 			<label for="descrip">Repetir Contrase&ntilde;a:</label>
-			<input type="password"  class="form-control" id="password2" placeholder="Aqu&iacute su Contrase&ntildea"  name="password2" required>
+			<input type="password"  class="form-control" id="password2" placeholder="Aqu&iacute su Contrase&ntildea"  name="password2">
 			 
 		</div>	
 		
 		<div class="form-group">
 			<label for="email">Email:</label>
-			<input class="form-control" placeholder="Ingrese mail" type="email" id="email" name="email" required>
+			<input class="form-control" placeholder="Ingrese mail" type="email" id="email" name="email" >
 		</div>
 	
 	<button type="submit" class="btn btn-success">Registrar Usuario</button>
