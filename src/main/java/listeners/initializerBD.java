@@ -31,9 +31,11 @@ public class initializerBD implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent arg0)  { 
-    	if(FactoryDAO.getUsers().getCount()==0){
+    	FactoryDAO.test();
+    	
+    	/*if(FactoryDAO.getUsers().getCount()==0){   		
     		FactoryDAO.initialize();
-    	}
+    	}*/
     }
 	
 }

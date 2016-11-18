@@ -1,6 +1,17 @@
 package clasesDAO;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
+
+import org.hibernate.cfg.Configuration;
+import org.hibernate.collection.internal.PersistentBag;
 
 import clases.*;
 import clasesDAO.JPAHibernate.*;
@@ -39,20 +50,24 @@ public class FactoryDAO {
 
 	public static void initialize() {
 		// TODO Auto-generated method stub
-		Config conf=new Config("0");
-		FactoryDAO.getConfig().persist(conf);
+		Config conf0=new Config("0");
+		Config conf1=new Config("1");
+		Config conf2=new Config("2");
+		FactoryDAO.getConfig().persist(conf0);
+		FactoryDAO.getConfig().persist(conf1);
+		FactoryDAO.getConfig().persist(conf2);
 		
 		SuscriptionManager manager=SuscriptionManager.getInstance();
 		FactoryDAO.getSuscriptionManager().persist(manager);
 		
 		
 		
-		Admin admin = new Admin("admin", "admin", conf, "admin@mail.com");
+		Admin admin = new Admin("admin", "admin", conf0, "admin@mail.com");
 	    FactoryDAO.getUsers().persist(admin);
-	    FactoryDAO.getUsers().persist(new Student("alu", "alu", conf, "alumno@mail.com"));
-	    FactoryDAO.getUsers().persist(new Administrative("adm", "adm", conf, "adminstrative@mail.com"));
-	    FactoryDAO.getUsers().persist(new Publisher("pub", "pub", conf, "publicador@mail.com"));
-	    FactoryDAO.getUsers().persist(new Professor("doc", "doc", conf, "profesor@mail.com"));
+	    FactoryDAO.getUsers().persist(new Student("alu", "alu", conf0, "alumno@mail.com"));
+	    FactoryDAO.getUsers().persist(new Administrative("adm", "adm", conf0, "adminstrative@mail.com"));
+	    FactoryDAO.getUsers().persist(new Publisher("pub", "pub", conf0, "publicador@mail.com"));
+	    FactoryDAO.getUsers().persist(new Professor("doc", "doc", conf0, "profesor@mail.com"));
 	    
 	    Comment comment=new Comment("Hello word",admin);
 	    FactoryDAO.getComments().persist(comment);
@@ -111,5 +126,214 @@ public class FactoryDAO {
 	    
 		System.out.println("inicialice todo!, ponele...");
 	}
+
+
+   private static void deleteDB(){
+	  //Configuration configuration=new Configuration();
+	  //configuration.setProperty("hibernate.hbm2ddl.auto", "create");	  
+	   EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
+	   
+	   Map<String, String> properties = new HashMap<String, String>(1);
+	   properties.put("hibernate.hbm2ddl.auto", "create");
+	   emf = Persistence.createEntityManagerFactory("miUP", properties);
+       
+		EntityManager em = emf.createEntityManager();
+		
+		
+		
+	/*	EntityTransaction etx = em.getTransaction();
+		etx.begin();
+	    em.createQuery("SELECT table FROM "+this.getPersistentClass().getSimpleName()  +" table where delete=0")).getResultList();
+		etx.commit();*/
+		em.close(); 
+			
+		  emf = Persistence.createEntityManagerFactory("miUP");
+		   
+		  
+		   emf = Persistence.createEntityManagerFactory("miUP");
+	       
+			 em = emf.createEntityManager();
+		
+   }
+
+	public static void test() {
+		FactoryDAO.deleteDB();
+		System.out.println("borro bd al principio");
+		
+		Config conf0=new Config("0");
+		Config conf1=new Config("1");
+		Config conf2=new Config("2");
+		FactoryDAO.getConfig().persist(conf0);
+		FactoryDAO.getConfig().persist(conf1);
+		FactoryDAO.getConfig().persist(conf2);
+		System.out.println("guardando las 3 configuraciones (0,1,2)");
+		
+		SuscriptionManager manager=SuscriptionManager.getInstance();
+		FactoryDAO.getSuscriptionManager().persist(manager);
+		System.out.println("persistiendo SuscriptionManager");
+		
+		
+		
+		Admin admin = new Admin("admin", "admin", conf0, "admin@mail.com");
+	    FactoryDAO.getUsers().persist(admin);
+	    FactoryDAO.getUsers().persist(new Student("alu", "alu", conf0, "alumno@mail.com"));
+	    FactoryDAO.getUsers().persist(new Administrative("adm", "adm", conf0, "adminstrative@mail.com"));
+	    FactoryDAO.getUsers().persist(new Publisher("pub", "pub", conf0, "publicador@mail.com"));
+	    FactoryDAO.getUsers().persist(new Professor("doc", "doc", conf0, "profesor@mail.com"));
+	    
+	    System.out.println("persistiendo los 5 usuarios (admin,alumno,administrativo,publicador,profesor)");
+	   
+	    Comment comment=new Comment("Hello word",admin);
+	    FactoryDAO.getComments().persist(comment);
+	    System.out.println("persistiendo comentario");
+	    
+	    Note note=new Note(false,new Date(), admin, "Nota de bienvenida con sorpresa ");
+	    note.addComment(comment);
+	    FactoryDAO.getNotes().persist(note);
+	    System.out.println("persistiendo nota bienvenida con el comentario y el admin asociados");
+	    
+	    System.out.println("generando las 10 pizarras (home,institucional, primero...quinto,info lab,eventos, perdidos");
+	    Board boardNoticias=new Board("Institucional", "Pizarra de las noticias institucionales de la facultad","institucional");
+	    FactoryDAO.getBoards().persist(boardNoticias);
+	    
+	    Board boardSubjectsFirstYear=new Board("Materias primer año", "Pizarra sobre  las noticias de las materias de primer año","primero");
+	    FactoryDAO.getBoards().persist(boardSubjectsFirstYear);
+	    
+	    Board boardSubjectsSecondYear=new Board("Materias segundo año", "Pizarra sobre  las noticias de las materias de segundo año","segundo");
+	    FactoryDAO.getBoards().persist(boardSubjectsSecondYear);
+	    
+	    Board boardSubjectsThirdYear=new Board("Materias tercer año", "Pizarra sobre  las noticias de las materias de tercer año","tercero");
+	    FactoryDAO.getBoards().persist(boardSubjectsThirdYear);
+	    
+	    Board boardSubjectsFourthYear=new Board("Materias cuarto año", "Pizarra sobre  las noticias de las materias de cuarto año","cuarto");
+	    FactoryDAO.getBoards().persist(boardSubjectsFourthYear);
+	    
+	    Board boardSubjectsFifthYear=new Board("Materias quinto año", "Pizarra sobre  las noticias de las materias de quinto año","quinto");
+	    FactoryDAO.getBoards().persist(boardSubjectsFifthYear);
+	    
+	    Board boardLaboral=new Board("Pizarra con información laboral", "Ofertas de trabajo para los alumnos","ofertas");
+	    FactoryDAO.getBoards().persist(boardLaboral);
+	    
+	    Board boardEvents=new Board("Pizarra de eventos", "Pizarra sobre  las noticias de eventos que se den en la facultad o relacionados","eventos");
+	    FactoryDAO.getBoards().persist(boardEvents);
+	    
+	    Board boardLostProperty=new Board("Objetos perdidos", "Pizarra con los objetos perdidos","perdidos");
+	    FactoryDAO.getBoards().persist(boardLostProperty);
+	    
+	    Board board=new Board("Home", "pizarra home","home");
+	    board.addNote(note);
+	    board.addBoard(boardNoticias);
+	    board.addBoard(boardSubjectsFirstYear);
+	    board.addBoard(boardSubjectsSecondYear);
+	    board.addBoard(boardSubjectsThirdYear);
+	    board.addBoard(boardSubjectsFourthYear);
+	    board.addBoard(boardSubjectsFifthYear);
+	    board.addBoard(boardLaboral);
+	    board.addBoard(boardEvents);
+	    board.addBoard(boardLostProperty);
+	    FactoryDAO.getBoards().persist(board);
+	    
+	    System.out.println("home es la pizarra 'root' y tiene tambien la nota con su respectivo comentario");
+	    
+	    //para ver si crea mailNotifier
+	    manager.addMailNotifier("mailUno@mail.com", boardNoticias);
+	    manager.addMailNotifier("mailDos@mail.com", boardNoticias);
+		FactoryDAO.getSuscriptionManager().update(manager);  //si usas persist explota, detached el mailNotif :p
+	    
+		System.out.println("updateando suscriptionManager con notificadores (mailUno y dos para la pizarra institucional)");
+		
+		System.out.println("*****************************INICIANDO TEST DE ALTA Y RECUPERACION******************");
+		// recuperar los datos insertados
+		System.out.println("CONSULTANDO ALTA CONFIGURACIONES");
+		if(FactoryDAO.getConfig().getCount()==3){
+			System.out.println("- - - -exito cantidad config");
+		}else{
+			System.out.println("- - - -error cantidad config");
+		}
+		
+		ArrayList<Config> configs=FactoryDAO.getConfig().getAllWithoutOrder();
+		for(Integer i=0;i<configs.size();i++){
+			if(configs.get(i).getOptionSelected().equals(i.toString())){
+				System.out.println("- - - -exito valor config"+i);
+			}else{
+				System.out.println("- - - -error valor config"+i);
+			}
+		}
+		
+		
+         System.out.println("CONSULTANDO ALTA DE LAS PIZARRAS Y DATOS DE LA PIZARRA Home");
+
+		if(FactoryDAO.getBoards().getCount()==10){
+			System.out.println("- - - -exito cantidad boards");
+		}else{
+			System.out.println("- - - -error cantidad boards");
+		}
+		
+		Board boardLevantada=FactoryDAO.getBoards().get(21L);
+		
+			if(boardLevantada.getName().equals("Home")){
+				System.out.println("- - - -exito valor nombre board");
+			}else{
+				System.out.println("- - - -error valor nombre board");
+			}
+			
+			if(boardLevantada.getNoteList().size()==1){
+				System.out.println("- - - -exito cantidad notas");
+			}else{
+				System.out.println("- - - -error cantidad notas");
+			}
+			PersistentBag noteList=(PersistentBag) boardLevantada.getNoteList();
+			PersistentBag commentList=(PersistentBag) ((Note)noteList.get(0)).getComments();
+			if(commentList.size()==1){
+				System.out.println("- - - -exito cantidad comment");
+			}else{
+				System.out.println("- - - -error cantidad comment");
+			}
+			if(((Comment)commentList.get(0)).getAuthor().getName().equals("admin")){
+				System.out.println("- - - -exito el creador del comment es admin");
+			}else{
+				System.out.println("- - - -error el creador del comment no es admin");
+			}
+			
+	     //System.out.println("borro bd al final");
+		//FactoryDAO.deleteDB();
+			
+			
+			
+			
+			System.out.println("*****************************INICIANDO TEST DE MODIFICACION Y BAJA******************");
+	        Board boardPrimeroTest=FactoryDAO.getBoards().get(13L);
+	        
+	        System.out.println(" agregando a pizarra de primer año, pizarra adp, con una nota y comentario cantidad boards es: "+boardPrimeroTest.getBoardList().size());
+	         
+	        Board boardADP=new Board("Pizarra de ADP", "Pizarra sobre  las noticias de la materia adp","adp");
+	        
+	        
+	        Comment commentADP=new Comment("Hola adp",admin);
+		    FactoryDAO.getComments().persist(commentADP);
+		    System.out.println("persistiendo comentario adp");
+		    
+		    Note noteADP=new Note(false,new Date(), admin, "Nota de bienvenida ADP ");
+		    noteADP.addComment(commentADP);
+		    FactoryDAO.getNotes().persist(noteADP);
+		    System.out.println("persistiendo nota bienvenida en la pizarra adp");
+		    
+		    boardADP.addNote(noteADP);
+		    FactoryDAO.getBoards().persist(boardADP);
+		    boardPrimeroTest.addBoard(boardADP);
+		    
+		    System.out.println("updateando board primero con board adp y su contenido");
+		    FactoryDAO.getBoards().update(boardPrimeroTest);
+		    
+		    Board boardPrimeroTestLevantada=FactoryDAO.getBoards().get(13L);	        
+	        System.out.println(" comentario cantidad boards tras updatear es: "+boardPrimeroTestLevantada.getBoardList().size());
+		    
+		    
+	}
+	
+	
+	
+	
+	
 	
 }

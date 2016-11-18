@@ -34,66 +34,8 @@
 
 <body>
 
- <%@ include file="../jsps/Header.jsp" %>
- 
- 
 
-<% Board pizarraContenedora=(Board)session.getAttribute("pizarra"); %>
-<%if (session.getAttribute("pathActual")==null || pizarraContenedora==null){ %>
-    <%response.sendRedirect("Home"); %>
-<%}%>
-
-
-    <!-- Page Content -->
-    <div class="container">
-    
-  
-     
-        <!-- Page Header -->
-        <div class="row">
-            <div class="col-lg-12">
-            <!--  LO COMENTE EL H1!!!!!!!!!! -->
-                <%-- - <h1 class="page-header"> <% out.print(" "+pizarraContenedora.getUbicacionActual()); %>         
-                    <!-- <small> <% out.print(" "+pizarraContenedora.getPath()); %> </small>     -->           
-                </h1> --%>
-                  <small>
-                    <ol class="breadcrumb">
-  					<li><a href="Home">Home</a></li>
-  					<li><a href="Materias">Materias</a></li>
-  					<li><a href="Ofertas">Ofertas laborales</a></li>
-  					<li class="active">Bootstrap 3</li>
-  					</ol>
-  					</small>
-            </div>
-        </div>
-        <!-- /.row -->
-      
-        
-      <%@ include file="../jsps/contenido.jsp" %>
-         <%-- 	 <jsp:include page="../jsps/contenido.jsp" flush="true" />--%>
-    
-       <!--  <hr> -->
-        <hr>
-
-        <!-- Footer -->
-        <!-- <footer>
-            <div class="row">
-                <div class="col-lg-12">
-                    <p>Copyright &copy; Your Website 2014</p>
-                </div>
-            </div>
-            /.row
-        </footer> -->
-        <%@include file="/jsps/Footer.jsp" %>
-
-    </div>
-    <!-- /.container -->
-
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+hola!
 
 </body>
 
