@@ -29,15 +29,19 @@
 <h1 style="text-align:center"> Alta Usuario</h1>
 
 <% String mensajeError=(String)session.getAttribute("mensajeError"); 
+	session.setAttribute("mensajeError",null); 
 %>
 <% if(mensajeError!=null && mensajeError.equals("") ){ %>
          <div class ='alert alert-success'><p style='text-align:center'>Se ha Ingresado Correctamente al Usuario</p></div>
+         	
 <%}else{ %>
         <%if (mensajeError!=null){ %>
-       		<div class ='alert alert-danger'><p style='text-align:center'>
-       		<%-- <%for (String valor: mensajeError.split("-")) {%> --%>
-                <%=mensajeError%><br>
-           <% %></p></div>  
+       		<div class ='alert alert-danger'>
+                <%for(String valor: mensajeError.split("-")){ 
+           			%><p style='text-align:center'><%=valor%></p></br>
+           
+           			<%} %>  
+           	</div>
        	<%} %>
 <% } %>
 
