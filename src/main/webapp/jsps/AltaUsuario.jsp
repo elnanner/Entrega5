@@ -35,9 +35,9 @@
 <%}else{ %>
         <%if (mensajeError!=null){ %>
        		<div class ='alert alert-danger'><p style='text-align:center'>
-       		<%for (String valor: mensajeError.split("-")) {%>
-                <%=valor%>
-           <% }%></p></div>  
+       		<%-- <%for (String valor: mensajeError.split("-")) {%> --%>
+                <%=mensajeError%><br>
+           <% %></p></div>  
        	<%} %>
 <% } %>
 
@@ -66,12 +66,12 @@
 		</div>	
 		<div class="form-group">	
 			<label for="descrip">Contrase&ntilde;a:</label>
-			<input type="password"  class="form-control" id="password1" placeholder="Aqu&iacute su Contrase&ntildea"  name="password1" >
+			<input type="password"  class="form-control" id="password1" placeholder="Aqu&iacute; su Contrase&ntilde;a"  name="password1" >
 			 
 		</div>	
 		<div class="form-group">	
 			<label for="descrip">Repetir Contrase&ntilde;a:</label>
-			<input type="password"  class="form-control" id="password2" placeholder="Aqu&iacute su Contrase&ntildea"  name="password2">
+			<input type="password"  class="form-control" id="password2" placeholder="Aqu&iacute; su Contrase&ntilde;a"  name="password2">
 			 
 		</div>	
 		

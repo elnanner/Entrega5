@@ -14,18 +14,18 @@ public class Validator {
 		ArrayList<String> result=new ArrayList<String>();
 		result.add(0,"true");
 		result.add(1,"");
-		if(!userName.isEmpty()){
+		if(!userName.equals("")){
 			result.set(0, "false");
 			result.set(1, result.get(1)+"El nombre de usuario no puede ser vacio.");
 			
 			//verificar contra bd por ej
 		}
-		if(!password.isEmpty()){
+		if(!password.equals("")){
 			result.set(0, "false");
 			result.set(1, result.get(1)+"-El password no puede ser vacio.");
 		}
 		
-		if(!email.isEmpty()){
+		if(!email.equals("")){
 			result.set(0, "false");
 			result.set(1, result.get(1)+"-El mail no puede ser vacio.");
 		}else{

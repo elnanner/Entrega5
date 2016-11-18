@@ -74,27 +74,29 @@ public class AltaUsuario extends HttpServlet {
 	        switch (tipoUser) {
 	            case "adm":
 	            	    
-	            		 FactoryDAO.getUsers().persist(new Admin(userName, password,  FactoryDAO.getConfig().getAllWithoutOrder().get(0), email));
-	            		 sesion.setAttribute("mensajeError","" );
-	                     break;
+            		 FactoryDAO.getUsers().persist(new Admin(userName, password,  FactoryDAO.getConfig().getAllWithoutOrder().get(0), email));
+            		 sesion.setAttribute("mensajeError","" );
+            		 response.sendRedirect("./AltaUsuario.jsp");
+                     break;
 	            case "alu":  
-	            		FactoryDAO.getUsers().persist(new Student(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
-	            		 sesion.setAttribute("mensajeError","" );
-	         			 //response.sendRedirect("./AltaUsuario.jsp");
-	                     break;
+            		 FactoryDAO.getUsers().persist(new Student(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
+            		 sesion.setAttribute("mensajeError","" );
+         			 response.sendRedirect("./AltaUsuario.jsp");
+                     break;
 	            case "pro":  
             		FactoryDAO.getUsers().persist(new Professor(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
             		 sesion.setAttribute("mensajeError","" );
-         			 //response.sendRedirect("./AltaUsuario.jsp");
+         			 response.sendRedirect("./AltaUsuario.jsp");
+         			 response.sendRedirect("./AltaUsuario.jsp");
                      break;
 	            case "pub":  
-            		FactoryDAO.getUsers().persist(new Publisher(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
+            		 FactoryDAO.getUsers().persist(new Publisher(userName, password, FactoryDAO.getConfig().getAllWithoutOrder().get(0), email)); 
             		 sesion.setAttribute("mensajeError","" );
-         			// response.sendRedirect("./AltaUsuario.jsp");
+         			 response.sendRedirect("./AltaUsuario.jsp");
                      break;
 	          
 	            default:
-	            	 sesion.setAttribute("mensajeError","Tipo de usuario inexistente" );
+	            	// sesion.setAttribute("mensajeError","Tipo de usuario inexistente" );
          			// response.sendRedirect("./AltaUsuario.jsp");
 	                 break;
 	        }
