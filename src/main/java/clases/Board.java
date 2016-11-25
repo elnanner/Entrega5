@@ -20,6 +20,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Board extends Observable{
 
+	
+	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	
