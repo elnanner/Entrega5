@@ -22,7 +22,7 @@ import clasesDAO.JPAHibernate.*;
 public class FactoryDAO {
 		
 	@Autowired 
-	private static GlobalConfigDAO configDAO;
+	private static /*GlobalConfigDAOHibernate*/ GlobalConfigDAO configDAO;
 	
 	@Autowired 
 	private static BoardDAO boardDAO;
@@ -42,7 +42,7 @@ public class FactoryDAO {
 		Config conf1=new Config("1");
 		Config conf2=new Config("2");
 		
-		configDAO=context.getBean(GlobalConfigDAO.class);
+		configDAO=context.getBean(/*GlobalConfigDAOHibernate.class*/GlobalConfigDAO.class);
 		configDAO.persist(conf0);
 		//context.getBean(GlobalConfigDAO.class).persist(conf0);
 		
@@ -134,7 +134,7 @@ public class FactoryDAO {
 			System.out.println("- - - -error cantidad config");
 		}
 		
-		ArrayList<Config> configs=FactoryDAO.getConfig().getAllWithoutOrder();
+		ArrayList<Config> configs=configDAO.getAllWithoutOrder();//context.getBean(GlobalConfigDAOHibernate.class).getAllWithoutOrder(); //OJO NO PUDE PONER CONFIGCOMUN!   //FactoryDAO.getConfig().getAllWithoutOrder();
 		for(Integer i=0;i<configs.size();i++){
 			if(configs.get(i).getOptionSelected().equals(i.toString())){
 				System.out.println("- - - -exito valor config"+i);
@@ -208,13 +208,13 @@ public class FactoryDAO {
 		    System.out.println("updateando board primero con board adp y su contenido");
 		    context.getBean(BoardDAO.class).update(boardPrimeroTest);
 		    
-		    Board boardPrimeroTestLevantada=FactoryDAO.getBoards().get(13L);	        
+		    Board boardPrimeroTestLevantada=context.getBean(BoardDAO.class).get(13L);	        
 	        System.out.println(" comentario cantidad boards tras updatear es: "+boardPrimeroTestLevantada.getBoardList().size());
 		    
 	        System.out.println("update texto comentario");
 	        commentADP.setText("updated");
 	        context.getBean(CommentDAO.class).update(commentADP);
-	        Comment commentADPUpdated =FactoryDAO.getComments().get(23L);
+	        Comment commentADPUpdated =context.getBean(CommentDAO.class).get(23L);
 	        if(commentADPUpdated.getText().equals("updated")){
 	        	 System.out.println("exito al updatear comentario ");
 	        }else{
@@ -227,7 +227,7 @@ public class FactoryDAO {
 	        
 	        boardADP.setDown(true);
 	        context.getBean(BoardDAO.class).update(boardADP);
-	        Board boardADPActualizada=FactoryDAO.getBoards().get(25L);
+	        Board boardADPActualizada=context.getBean(BoardDAO.class).get(25L);
 	        System.out.println(" baja de la pizarra adp antes del borrado logico (actualiacion) es: "+boardADPActualizada.getDown());
 	        
 	        

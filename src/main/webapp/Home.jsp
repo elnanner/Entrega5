@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
        <%@ page import="clases.Board"%>
        <%@ page import="clasesDAO.FactoryDAO"%>
        <%@ page import="clases.Note"%>
-        <%@ page import="clases.User"%>
+        <%@ page import="clases.User"%>--%>
 <!DOCTYPE html>
 <html lang="es">
 <head>

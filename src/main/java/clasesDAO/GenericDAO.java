@@ -1,5 +1,9 @@
 package clasesDAO;
 
+import java.util.ArrayList;
+
+import clases.Config;
+
 public interface GenericDAO<T> {
 
 	public T update(T entity);
@@ -9,5 +13,6 @@ public interface GenericDAO<T> {
 	public T persist(T entity);
 	public T get(Long id);
 	public Integer getCount();
+	public ArrayList<T> getAllWithoutOrder();  //PARCHE TEMPORAL OJO!
 	
 }

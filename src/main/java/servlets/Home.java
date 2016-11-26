@@ -32,7 +32,8 @@ public class Home extends HttpServlet {
 		HttpSession sesion = request.getSession(true);
 		//if(sesion.getAttribute("pathActual")==null){
 			sesion.setAttribute("pathActual", "Home");
-			sesion.setAttribute("pizarra",FactoryDAO.getBoards().getBoardCall("Home") );
+			//sesion.setAttribute("pizarra",FactoryDAO.getBoards().getBoardCall("Home") );
+			sesion.setAttribute("pizarra","pongo esto porque cambiamos el factoryDAO por spring (prox paso lo maneja todo spring)" );
 		//}
 		if(sesion.getAttribute("pizarra")!=null){//lo normal
 			response.sendRedirect("./Home.jsp");

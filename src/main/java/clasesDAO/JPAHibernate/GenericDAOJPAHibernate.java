@@ -89,7 +89,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 	@Override
 	public T persist(T entity) {
 		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
-	     System.out.println(" el entity que spring deberia inicializar es... "+this.getEntityManager());
+	//System.out.println(" el entity que spring deberia inicializar es... "+this.getEntityManager());
 		this.getEntityManager().persist(entity);
 		
 		/*EntityManager em = emf.createEntityManager();
@@ -127,7 +127,7 @@ public class GenericDAOJPAHibernate<T> implements GenericDAO<T> {
 	}
 	
 	
-
+    @Override
 	public ArrayList<T> getAllWithoutOrder(){
 		ArrayList<T> result = new ArrayList<T>();
 		//EntityManagerFactory emf = Persistence.createEntityManagerFactory("miUP");
