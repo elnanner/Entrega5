@@ -80,12 +80,12 @@ public class User {
 
 	
 	public void addBoardInterest(Board board){
-		suscriptionManager.addMailNotifier(mail, board);
+		suscriptionManager.addMailNotifier(this, board);
 		favouritesBoards.add(board);
 	}
 
 	public void removeBoardInterest(Board board){
-		suscriptionManager.removeMailNotifier(mail, board);
+		suscriptionManager.removeMailNotifier(this, board);
 		favouritesBoards.remove(board);
 		
 	}

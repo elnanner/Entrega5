@@ -119,8 +119,8 @@ public class FactoryDAO {
 	    System.out.println("home es la pizarra 'root' y tiene tambien la nota con su respectivo comentario");
 	    
 	    //para ver si crea mailNotifier
-	    manager.addMailNotifier("mailUno@mail.com", boardNoticias);
-	    manager.addMailNotifier("mailDos@mail.com", boardNoticias);
+	    manager.addMailNotifier(admin/*"mailUno@mail.com"*/, boardNoticias);
+	   // manager.addMailNotifier(/*"mailDos@mail.com"*/, boardNoticias);
 	    context.getBean(SuscriptionManagerDAO.class).update(manager);  //si usas persist explota, detached el mailNotif :p
 	    
 		System.out.println("updateando suscriptionManager con notificadores (mailUno y dos para la pizarra institucional)");

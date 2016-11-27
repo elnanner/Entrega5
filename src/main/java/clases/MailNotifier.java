@@ -8,17 +8,21 @@ import java.util.Observer;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class MailNotifier implements Observer {
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
-	@ElementCollection
-	private Collection<String> mails;
+    
+	/*@ElementCollection  //lo saco porque ya no es de elementos*/
+	@OneToMany(fetch = FetchType.EAGER)
+	private Collection</*String*/User> mails;
 	
 	public MailNotifier(){
 		
@@ -26,17 +30,17 @@ public class MailNotifier implements Observer {
 	
 	public MailNotifier(Board board){
 		board.addObserver(this);
-		mails=new ArrayList<String>();
+		mails=new ArrayList<User>();
 	}
 	
 	
 	 
-	public void addMail(String mail){
-		mails.add(mail);
+	public void addUser(User user){
+		mails.add(user);
 	}
 	
-	public void removeMail(String mail){
-		mails.remove(mail);
+	public void removeUser(User user){
+		mails.remove(user);
 	}
 	 
 	

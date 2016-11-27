@@ -63,12 +63,12 @@ public class SuscriptionManager {
      }
     
     
-    public void addMailNotifier(String mail,Board board){
+    public void addMailNotifier(User user,Board board){
     	if(! mailNotifiers.containsKey(board)){
     		mailNotifiers.put(board,new MailNotifier(board));
     		//mailNotifiers.add(new MailNotifier(board));
         }
-    	mailNotifiers.get(board).addMail(mail); 
+    	mailNotifiers.get(board).addUser(user); 
     	
     	/*if(! boards.contains(board)){
     		boards.add(board);
@@ -77,9 +77,9 @@ public class SuscriptionManager {
     	mailNotifiers.get(boards.indexOf(board)).addMail(mail);  */  
     }
     
-    public void removeMailNotifier(String mail,Board board){
+    public void removeMailNotifier(User user,Board board){
     	 if(mailNotifiers.containsKey(board)){
-    		 mailNotifiers.get(board).removeMail(mail);
+    		 mailNotifiers.get(board).removeUser(user);
     	 }
     	 
     	/*
